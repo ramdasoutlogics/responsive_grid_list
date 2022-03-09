@@ -9,6 +9,7 @@ import 'package:responsive_grid_list/src/abstract_responsive_grid_list.dart';
 class ResponsiveGridList extends AbstractResponsiveGridList {
   /// shrinkWrap property of [ListView.builder].
   final bool shrinkWrap;
+  final ScrollPhysics? scrollPhysics;
 
   const ResponsiveGridList({
     required double minItemWidth,
@@ -18,6 +19,7 @@ class ResponsiveGridList extends AbstractResponsiveGridList {
     double verticalGridSpacing = 16,
     double? horizontalGridMargin,
     double? verticalGridMargin,
+    this.scrollPhysics,
     MainAxisAlignment rowMainAxisAlignment = MainAxisAlignment.start,
     this.shrinkWrap = false,
     required List<Widget> children,
@@ -42,6 +44,7 @@ class ResponsiveGridList extends AbstractResponsiveGridList {
 
         return ListView.builder(
           itemCount: items.length,
+          physics: scrollPhysics,
           shrinkWrap: shrinkWrap,
           itemBuilder: (BuildContext context, int index) {
             return items[index];
